@@ -47,5 +47,22 @@ Setup and run in production mode
 * run
 
 ```shell
+/usr/bin/crawler --help
+Usage: crawler [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -d DOMAIN, --domain=DOMAIN
+                        uri for crawling, example: example.com
+  -s SCHEME, --scheme=SCHEME
+                        available schemas: http and https, [default: https]
+  -r REPORT, --report=REPORT
+                        path to report.json, [default: /tmp/report.json]
+  -p POOL_SIZE, --pool-size=POOL_SIZE
+                        eventlet pool size, [default: 100]
+  -t TIMEOUT, --timeout=TIMEOUT
+                        http request timeout in seconds, [default: 20]
+
+
 /usr/bin/crawler --domain=digitalocean.com
 ```
