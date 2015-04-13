@@ -1,0 +1,13 @@
+Source: crawler-1.0.0
+Section: admin
+Priority: optional
+Maintainer: Eduard Snesarev <verm666@gmail.com>
+Uploaders: Eduard Snesarev <verm666@gmail.com>
+Build-Depends: debhelper (>= 7), cdbs, verm666-cdbs-python
+Standards-Version: 3.8.4
+
+Package: crawler
+Architecture: any
+Section: admin
+Depends: python-minimal, ${shlibs:Depends}
+Description: HTTP crawler

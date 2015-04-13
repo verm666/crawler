@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+from crawler import run_crawler
+
+if __name__ == "__main__":
+    run_crawler()
