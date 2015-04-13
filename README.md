@@ -1,5 +1,5 @@
-Setup and run in developer mode
-===============================
+Setup, test and run in developer mode
+=====================================
 
 * setup
 
@@ -13,7 +13,13 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-* run
+* run tests
+
+```shell
+python ./tests/tests.py
+```
+
+* run crawler
 
 ```shell
 ./bin/local_run-crawler --help
