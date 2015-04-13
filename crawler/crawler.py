@@ -9,7 +9,6 @@ import requests
 import eventlet
 
 from bs4 import BeautifulSoup
-from eventlet_log import create_logger
 
 from .utils import *
 from .logger import *
