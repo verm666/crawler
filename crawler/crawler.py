@@ -50,6 +50,9 @@ class Crawler(object):
         self.pool = eventlet.GreenPool(self.options.pool_size)
 
         self.processed_links = set()
+
+        # many projects has only one (or another limited count) of css files,
+        # so parse one file twice - it's a waste of time.
         self.css_cache = {}
 
         self.scheme = self.options.scheme
@@ -124,6 +127,8 @@ class Crawler(object):
                 continue
 
             normalized_href = uri_normalize(href, c)
+
+            # we have no another way to filter html pages from jpg, pdf, etc
             r = head(normalized_href, timeout=self.options.timeout)
             if r is None:
                 continue
