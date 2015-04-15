@@ -1,5 +1,5 @@
-Setup and run in developer mode
-===============================
+Setup, test and run in developer mode
+=====================================
 
 * setup
 
@@ -13,7 +13,13 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-* run
+* run tests
+
+```shell
+python ./tests/tests.py
+```
+
+* run crawler
 
 ```shell
 ./bin/local_run-crawler --help
@@ -39,9 +45,14 @@ Options:
 Setup and run in production mode
 ================================
 
+Using "git clone" and so on in production - not a better way. For production you should
+build deb packages. For building deb package from python project I use my own CDBS helper:
+https://gist.github.com/verm666/865e3d8849f49a152559
+
 * setup
 
 ```shell
+apt-get install crawler
 ```
 
 * run
