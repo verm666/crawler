@@ -21,7 +21,7 @@ def run_crawler():
         p.add_option("-d", "--domain",
             help="uri for crawling, example: example.com")
 
-        p.add_option("-s", "--scheme", default="https",
+        p.add_option("-s", "--scheme", default="http",
             help="available schemas: http and https, [default: %default]")
 
         p.add_option("-r", "--report", default="/tmp/report.json",
@@ -30,7 +30,7 @@ def run_crawler():
         p.add_option("-p", "--pool-size", default=100, type="int",
             help="eventlet pool size, [default: %default]")
 
-        p.add_option("-t", "--timeout", default=20, type="int",
+        p.add_option("-t", "--timeout", default=30, type="int",
             help="http request timeout in seconds, [default: %default]")
 
         (options, args) = p.parse_args()
