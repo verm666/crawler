@@ -90,7 +90,7 @@ class Crawler(object):
         # extract styles
         links = parsed.find_all('link', href=True, rel='stylesheet')
         for link in links:
-            href = link.get('href')
+            href = link.get('href').strip()
             normalized_href = uri_normalize(href, c)
 
             if not uri_filter_by_netloc(normalized_href, self.netloc):
@@ -118,7 +118,7 @@ class Crawler(object):
         # extract links_to
         links = parsed.find_all('a', href=True)
         for link in links:
-            href = link.get('href')
+            href = link.get('href').strip()
             if href.startswith('#') or href.startswith('mailto:'):
                 continue
 
@@ -137,7 +137,7 @@ class Crawler(object):
                 info("{0}: found links_to: {1}".format(uri, normalized_href))
                 links_to.add(normalized_href)
 
-                if normalized_href not in self.processed_links:
+                if uri_remove_netloc(normalized_href) not in self.processed_links:
                     self.queue.put(normalized_href)
 
         self.result.put((uri, assets, links_to))
@@ -146,10 +146,10 @@ class Crawler(object):
         while True:
             while not self.queue.empty():
                 uri = self.queue.get()
-                if uri in self.processed_links:
+                if uri_remove_netloc(uri) in self.processed_links:
                     continue
 
-                self.processed_links.add(uri)
+                self.processed_links.add(uri_remove_netloc(uri))
                 self.pool.spawn_n(self.crawl, uri)
 
             self.pool.waitall()

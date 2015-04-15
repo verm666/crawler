@@ -85,6 +85,23 @@ class TestUriFilterByNetloc(unittest.TestCase):
         u = uri_filter_by_netloc('http://example.com', 'example.org')
         self.assertEqual(u, None)
 
+class TestUriRemoveNetloc(unittest.TestCase):
+    def test_remove_from_only_netloc(self):
+        u = uri_remove_netloc('http://example.com')
+        self.assertEqual(u, '/')
+
+    def test_remove_from_netloc_and_slash(self):
+        u = uri_remove_netloc('http://example.com/')
+        self.assertEqual(u, '/')
+
+    def test_remove_from_netloc_and_slash(self):
+        u = uri_remove_netloc('http://example.com/test/intro.html?test=10')
+        self.assertEqual(u, '/test/intro.html?test=10')
+
+    def test_dont_remove_fragments(self):
+        u = uri_remove_netloc('http://example.com/test/intro.html#content')
+        self.assertEqual(u, '/test/intro.html#content')
+
 class TestMakeContext(unittest.TestCase):
     def test_make_context_without_path(self):
         u = 'http://example.com/'
