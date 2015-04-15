@@ -4,9 +4,9 @@ Setup, test and run in developer mode
 * setup
 
 ```shell
-apt-get install python-dev python-virtualenv build-essential
+sudo apt-get install python-dev python-virtualenv build-essential
 
-git clone
+git clone https://github.com/verm666/crawler
 cd crawler
 virtualenv env
 source env/bin/activate
