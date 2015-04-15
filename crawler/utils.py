@@ -60,14 +60,6 @@ def uris_filter_by_netloc(uris, netloc):
 def uri_remove_netloc(uri):
     parsed_uri = urlparse(uri)
 
-    return ParseResult(path=parsed_uri.path,
-        params=parsed_uri.params,
-        query=parsed_uri.query,
-        fragment='').geturl()
-
-def uri_remove_netloc(uri):
-    parsed_uri = urlparse(uri)
-
     return ParseResult(scheme=None,
         netloc=None,
         path="/" if parsed_uri.path == '' else parsed_uri.path,
